@@ -18,6 +18,13 @@ def user_create_view(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             password = form.cleaned_data['password']
-            nuevo_user = User(name=name, password=password)
-            nuevo_user.save()
-            return HttpResponse(f"<h3>{nuevo_user.id}</h3>")
+            usuarios = User.objects.all()
+            invalid_usernames = []
+            for usuario in usuarios:
+                invalid_usernames.append(usuario.name)
+            if name in invalid_usernames:
+                return HttpResponse(f"<h3>ese nombre ya esta tomado</h3>")
+            else:
+                nuevo_user = User(name=name, password=password)
+                nuevo_user.save()
+                return HttpResponse(f"<h3>{nuevo_user.id}</h3>")
