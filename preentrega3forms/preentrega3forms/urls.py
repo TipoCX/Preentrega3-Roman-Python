@@ -20,10 +20,10 @@ from django.urls import include, path
 from django.http import HttpResponse
 
 def index(xx):
-    return HttpResponse("<h1>Este es el index</h1>")
+    return HttpResponse('<a href="forms/">forms</a>')
 
 urlpatterns = [
     path("forms/", include("forms.urls")),
     path("admin/", admin.site.urls),
-    path("", admin.site.urls)
+    path("", index)
 ]

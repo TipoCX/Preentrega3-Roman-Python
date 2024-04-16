@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 class User(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=40)
 
     def sendmessage(self, content, group):
@@ -18,8 +18,10 @@ class Group(models.Model):
     alias = models.CharField(max_length=40)
     description = models.CharField(max_length=450)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+
     def send_create_message(self):
         message = Message.objects.create(content=f"{self.creator} a creado el grupo {self.alias}", group=self, author=self.creator)
+
 
 class Message(models.Model):
     content = models.TextField()

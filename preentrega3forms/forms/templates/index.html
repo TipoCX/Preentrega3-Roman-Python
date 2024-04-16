@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    {% if usuarios %}
+<ul>
+    {% for user in usuarios %}
+     <div class="card" style=""> <p>{{ user.name }}</p> <a class="abutton" href="">Login</a> </div>
+    {% endfor %}
+</ul>
+    {% else %}
+    <p>no se an encontrado usuarios</p>
+    {% endif %}
+{% endblock %}
