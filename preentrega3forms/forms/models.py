@@ -27,4 +27,4 @@ class Message(models.Model):
     content = models.TextField()
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    time = models.TimeField(default=timezone.now)
+    time = models.DateTimeField(default=timezone.now)

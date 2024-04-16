@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import *
 from .forms import *
 
+
 # Create your views here.
 def index(xx):
     users = User.objects.all()
@@ -28,3 +29,14 @@ def user_create_view(request):
                 nuevo_user = User(name=name, password=password)
                 nuevo_user.save()
                 return HttpResponse(f"<h3>{nuevo_user.id}</h3>")
+
+def group_view(request):
+    if request.method == "GET":
+        groups = Group.objects.all()
+        messages = Message.objects.filter(group=groups[0]).all()
+        context = {"group":groups[0], "messages":messages}
+        return render(request, "group.html", context)
+    elif request.method == "POST":
+        users = User.objects.all()
+        context = {"usuarios": users}
+        return render(request, 'index.html', context)
