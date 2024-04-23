@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Crear User{% endblock %}
+{% block title %}Crear Group{% endblock %}
 
 {% block content %}
 <section class="py-5">
     <div class="container">
-        <h2 class="mb-4">Crear Usuario</h2>
+        <h2 class="mb-4">Crear Grupo</h2>
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Datos del Usuario
+                        Datos del Grupo
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'create-user' %}">
+                        <form method="POST" action="{% url 'create-group' %}">
                             {% csrf_token %}
                             {{ Form.as_p }}
                             <button type="submit" class="btn btn-primary">Envíar</button>

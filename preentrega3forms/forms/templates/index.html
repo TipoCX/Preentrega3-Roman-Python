@@ -4,7 +4,7 @@
     {% if usuarios %}
 <ul>
     {% for user in usuarios %}
-     <div class="carduser" style=""> <p>{{ user.name }}</p> <a class="abutton" href="{% url 'group' %}">Login</a> </div>
+     <div class="carduser" style=""> <p>{{ user.name }}</p> <a class="abutton" href="{% url 'group' userid=user.id %}">Login</a> </div>
     {% endfor %}
 </ul>
     {% else %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear User{% endblock %}
+
+{% block content %}
+<div class="group-container">
+    <div class="messages-container">
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message.content}} ----- {{message.author}} -----{{message.time}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <form method="POST" action="{% url 'group' userid=userid %}">
+        {% csrf_token %}
+        {{ Form.as_p }}
+        <button type="submit" class="btn btn-primary">Envíar</button>
+    </form>
+</div>
+{% endblock %}

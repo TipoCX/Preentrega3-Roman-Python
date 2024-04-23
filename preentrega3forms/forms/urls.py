@@ -5,5 +5,8 @@ from django.urls import include, path
 urlpatterns = [
     path("", index, name="home"),
     path("createuser", user_create_view, name="create-user"),
-    path("group", group_view, name="group")
+    path("group/<userid>", group_view, name="group"),
+    path("login", login_view, name="login"),
+    path("creategroup", group_create_view, name="create-group"),
+
 ]
